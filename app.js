@@ -54,6 +54,20 @@ app.get('/todos/:id', function(req, res) {
   });
 });
 
+app.put('/todos/:id', function(req, res) {
+  const values = {
+    content: req.body.todoContent
+  };
+  const options = {
+    where: {
+      id: req.params.id
+    }
+  };
+  db.todo.update(values, options).then(function(results) {
+    res.redirect('/todos');
+  })
+});
+
 app.delete('/todos/:id', function(req, res) {
   const options = {
     where: {

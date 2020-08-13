@@ -9,7 +9,8 @@
     <h1>Todoリスト</h1>
 
     <h2>Todo編集</h2>
-    <form action="/todos" method="post">
+    <form action="/todos/<%= todo.id %>" method="post">
+        <input type="hidden" name="_method" value="put">
         <input type="text" name="todoContent" value="<%= todo.content %>">
         <input type="submit" value="更新">
     </form>
