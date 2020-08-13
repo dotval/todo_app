@@ -18,6 +18,10 @@
     <ul>
         <% todos.map(function(todo) { %>
             <li><%= todo.content %></li>
+            <form action="/todos/<%= todo.id %>" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" value="削除">
+            </form>
         <% }) %>
     </ul>
 </body>
