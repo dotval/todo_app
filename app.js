@@ -48,6 +48,12 @@ app.post('/todos', function(req, res) {
   });
 });
 
+app.get('/todos/:id', function(req, res) {
+  db.todo.findByPk(req.params.id).then(function(results) {
+    res.render('todos/edit', { todo: results } );
+  });
+});
+
 app.delete('/todos/:id', function(req, res) {
   const options = {
     where: {

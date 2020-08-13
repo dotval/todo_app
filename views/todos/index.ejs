@@ -18,6 +18,9 @@
     <ul>
         <% todos.map(function(todo) { %>
             <li><%= todo.content %></li>
+            <a href="/todos/<%= todo.id %>">
+                <button>編集</button>
+            </a>
             <form action="/todos/<%= todo.id %>" method="post">
                 <input type="hidden" name="_method" value="delete">
                 <input type="submit" value="削除">
