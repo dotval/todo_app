@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todoリスト</title>
+</head>
+<body>
+    <h1>Todoリスト</h1>
+
+    <!-- <h2>Todo作成</h2>
+    <form action="/todos" method="post">
+        <input type="text" name="todoContent">
+        <input type="submit" value="作成">
+    </form> -->
+    <a href="/todos">Todo一覧に戻る</a>
+    
+    <h2>カテゴリー管理</h2>
+    <ul>
+        <% categories.map(function(category) { %>
+            <li><%= category.name %></li>
+        <% }) %>
+    </ul>
+</body>
+</html>
