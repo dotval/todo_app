@@ -18,7 +18,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // ここから書き始める
-const db = require('./models/index');
 const methodOverride = require('method-override');
 app.use(methodOverride(function (req, res) {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
@@ -33,51 +32,9 @@ app.get('/', function(req, res) {
   res.redirect('/todos');
 });
 
-app.get('/todos', function(req, res) {
-  db.todo.findAll().then(function(results) {
-    res.render('todos/index', { todos: results } );
-  });
-});
+const todosRouter = require('./routes/todos');
+app.use('/todos', todosRouter);
 
-app.post('/todos', function(req, res) {
-  const values = {
-    content: req.body.todoContent
-  };
-  db.todo.create(values).then(function(results) {
-    res.redirect('/todos');
-  });
-});
-
-app.get('/todos/:id', function(req, res) {
-  db.todo.findByPk(req.params.id).then(function(results) {
-    res.render('todos/edit', { todo: results } );
-  });
-});
-
-app.put('/todos/:id', function(req, res) {
-  const values = {
-    content: req.body.todoContent
-  };
-  const options = {
-    where: {
-      id: req.params.id
-    }
-  };
-  db.todo.update(values, options).then(function(results) {
-    res.redirect('/todos');
-  })
-});
-
-app.delete('/todos/:id', function(req, res) {
-  const options = {
-    where: {
-      id: req.params.id
-    }
-  };
-  db.todo.destroy(options).then(function(results) {
-    res.redirect('/todos');
-  });
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
