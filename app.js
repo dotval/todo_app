@@ -33,7 +33,9 @@ app.get('/', function(req, res) {
 });
 
 const todosRouter = require('./routes/todos');
+const categoriesRouter = require('./routes/categories');
 app.use('/todos', todosRouter);
+app.use('/categories', categoriesRouter);
 
 
 // catch 404 and forward to error handler
