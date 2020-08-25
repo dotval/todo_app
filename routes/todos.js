@@ -3,8 +3,13 @@ const router = express.Router();
 const db = require('../models/index');
 
 router.get('/', function(req, res) {
-  db.todo.findAll().then(function(results) {
-    res.render('todos/index', { todos: results } );
+  const options = {
+    include: [{
+      model: db.todo
+    }]
+  };
+  db.category.findAll(options).then(function(results) {
+    res.render('todos/index', { categories: results } );
   });
 });
 
