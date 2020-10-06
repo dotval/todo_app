@@ -15,7 +15,8 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
   const values = {
-    content: req.body.todoContent
+    content: req.body.todoContent,
+    category_id: req.body.categoryId
   };
   db.todo.create(values).then(function(results) {
     res.redirect('/todos');

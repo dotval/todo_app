@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   todo.init({
-    content: DataTypes.STRING
+    content: DataTypes.STRING,
+    category_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'todo',

@@ -11,6 +11,11 @@
     <h2>Todo作成</h2>
     <form action="/todos" method="post">
         <input type="text" name="todoContent">
+        <select name="categoryId">
+            <% categories.map(function(category) { %>
+                <option value="<%= category.id %>"><%= category.name %></option>
+            <% }) %>
+        </select>
         <input type="submit" value="作成">
     </form>
 
